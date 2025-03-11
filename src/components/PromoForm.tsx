@@ -23,14 +23,28 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { useEffect, useState } from "react";
 
 const FormSchema = z.object({
   name: z.string().min(5, "Nome inválido"),
   email: z.string().email("E-mail inválido"),
   phone: z.string().regex(/^\+?[0-9]{10,15}$/, "Telfone inválido"),
+  cpf: z.string().min(8, "CPF inválido"),
 });
 
 export function PromoForm() {
+  const [totalCodigos, setTotalCodigos] = useState(10000);
+
+  function getRandomNumber(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  useEffect(() => {
+    setInterval(() => {
+      setTotalCodigos((prev) => prev - getRandomNumber(1, 5));
+    }, 2000);
+  }, []);
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -57,7 +71,9 @@ export function PromoForm() {
           </CardHeader>
           <CardContent className="flex flex-col space-y-8">
             <div className="flex justify-center items-end">
-              <span className="text-7xl font-semibold text-center">10.000</span>
+              <span className="text-7xl font-semibold text-center">
+                {totalCodigos}
+              </span>
               <span>disponíveis</span>
             </div>
             <FormField
@@ -100,6 +116,23 @@ export function PromoForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Telefone</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Telefone"
+                      {...field}
+                      className="border-1 border-black"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="cpf"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>CPF</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Telefone"
