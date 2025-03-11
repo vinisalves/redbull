@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -42,6 +41,7 @@ export function PromoForm() {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    console.log(data);
     toast("test");
   }
 
