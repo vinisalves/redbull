@@ -61,15 +61,17 @@ export function PromoForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-[24rem]">
-        <Card className="bg-white/75  backdrop-blur-sm">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-[24rem] ">
+        <Card className="bg-white/20 sm:bg-white/80  sm:backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="text-center">Obtenha seu código</CardTitle>
-            <CardDescription className="text-black text-center">
+            <CardTitle className="text-center text-white sm:text-black ">
+              Obtenha seu código
+            </CardTitle>
+            <CardDescription className="text-white sm:text-black text-center">
               Preencha o formulário para obter seu código promocional
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-col space-y-8">
+          <CardContent className="flex flex-col space-y-8 text-white sm:text-black">
             <div className="flex justify-center items-end">
               <span className="text-7xl font-semibold text-center">
                 {totalCodigos}
@@ -80,13 +82,13 @@ export function PromoForm() {
               control={form.control}
               name="name"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="text-white sm:text-black">
                   <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Email"
                       {...field}
-                      className="border-1 border-black"
+                      className="bg-white/50 sm:bg-transparent border-1 border-black  "
                     />
                   </FormControl>
                   <FormMessage />
@@ -97,13 +99,13 @@ export function PromoForm() {
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="text-white sm:text-black">
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Email"
                       {...field}
-                      className="border-1 border-black"
+                      className="bg-white/50 sm:bg-transparent border-1 border-black  "
                     />
                   </FormControl>
                   <FormMessage />
@@ -114,13 +116,13 @@ export function PromoForm() {
               control={form.control}
               name="phone"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="text-white sm:text-black">
                   <FormLabel>Telefone</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Telefone"
                       {...field}
-                      className="border-1 border-black"
+                      className="bg-white/50 sm:bg-transparent border-1 border-black  "
                     />
                   </FormControl>
                   <FormMessage />
@@ -137,7 +139,7 @@ export function PromoForm() {
                     <Input
                       placeholder="Telefone"
                       {...field}
-                      className="border-1 border-black"
+                      className="bg-white/50 sm:bg-transparent border-1 border-black  "
                     />
                   </FormControl>
                   <FormMessage />

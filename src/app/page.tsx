@@ -19,8 +19,7 @@ export default function Home() {
       </div>
       <div className="z-10 ">
         <PromoForm />
-      </div>{" "}
-      *
+      </div>
     </div>
   );
 }
