@@ -25,12 +25,13 @@ import {
 } from "./ui/card";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Checkbox } from "./ui/checkbox";
 
 const FormSchema = z.object({
   name: z.string().min(5, "Nome inválido"),
   email: z.string().email("E-mail inválido"),
   phone: z.string().regex(/^\+?[0-9]{10,15}$/, "Telfone inválido"),
-  cpf: z.string().min(8, "CPF inválido"),
+  confirm: z.boolean(),
 });
 
 export function PromoForm() {
@@ -52,6 +53,7 @@ export function PromoForm() {
       name: "",
       email: "",
       phone: "",
+      confirm: false,
     },
   });
 
@@ -139,21 +141,25 @@ export function PromoForm() {
             />
             <FormField
               control={form.control}
-              name="cpf"
+              name="phone"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>CPF</FormLabel>
+                <FormItem className="text-white ">
                   <FormControl>
-                    <Input
-                      placeholder="Telefone"
-                      {...field}
-                      className="bg-white/50 sm:bg-transparent border-1 text-white placeholder:text-white   "
-                    />
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="terms" {...field} />
+                      <label
+                        htmlFor="terms"
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Concorda em passar suas informações?
+                      </label>
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <Button type="submit" className=" w-full bg-purple-800">
               Obter Código
             </Button>
