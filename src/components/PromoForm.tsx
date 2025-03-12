@@ -24,6 +24,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const FormSchema = z.object({
   name: z.string().min(5, "Nome inválido"),
@@ -62,16 +63,23 @@ export function PromoForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-[24rem] ">
-        <Card className="bg-white/20 sm:bg-white/80  sm:backdrop-blur-sm">
+        <Card className="bg-white/20   sm:backdrop-blur-[5px]">
           <CardHeader>
-            <CardTitle className="text-center text-white sm:text-black ">
+            <Image
+              src="/imgs/redbullcom-logo_double-with-text.svg"
+              width={300}
+              height={300}
+              alt="Redbull Logo"
+              className="mb-5"
+            />
+            <CardTitle className="text-center text-white  ">
               Obtenha seu código
             </CardTitle>
-            <CardDescription className="text-white sm:text-black text-center">
+            <CardDescription className="text-white  text-center">
               Preencha o formulário para obter seu código promocional
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-col space-y-8 text-white sm:text-black">
+          <CardContent className="flex flex-col space-y-8 text-white ">
             <div className="flex justify-center items-end">
               <span className="text-7xl font-semibold text-center">
                 {totalCodigos}
@@ -82,13 +90,13 @@ export function PromoForm() {
               control={form.control}
               name="name"
               render={({ field }) => (
-                <FormItem className="text-white sm:text-black">
+                <FormItem className="text-white ">
                   <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Email"
+                      placeholder="Nome"
                       {...field}
-                      className="bg-white/50 sm:bg-transparent border-1 border-black  "
+                      className="bg-white/50 sm:bg-transparent border-1 border-white  placeholder:text-white "
                     />
                   </FormControl>
                   <FormMessage />
@@ -99,13 +107,13 @@ export function PromoForm() {
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem className="text-white sm:text-black">
+                <FormItem className="text-white ">
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Email"
                       {...field}
-                      className="bg-white/50 sm:bg-transparent border-1 border-black  "
+                      className="bg-white/50 sm:bg-transparent border-1 border-white  placeholder:text-white "
                     />
                   </FormControl>
                   <FormMessage />
@@ -116,13 +124,13 @@ export function PromoForm() {
               control={form.control}
               name="phone"
               render={({ field }) => (
-                <FormItem className="text-white sm:text-black">
+                <FormItem className="text-white ">
                   <FormLabel>Telefone</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Telefone"
                       {...field}
-                      className="bg-white/50 sm:bg-transparent border-1 border-black  "
+                      className="bg-white/50 sm:bg-transparent border-1 border-white  placeholder:text-white  "
                     />
                   </FormControl>
                   <FormMessage />
@@ -139,7 +147,7 @@ export function PromoForm() {
                     <Input
                       placeholder="Telefone"
                       {...field}
-                      className="bg-white/50 sm:bg-transparent border-1 border-black  "
+                      className="bg-white/50 sm:bg-transparent border-1 text-white placeholder:text-white   "
                     />
                   </FormControl>
                   <FormMessage />
